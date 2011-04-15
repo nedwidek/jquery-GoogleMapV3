@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>JQuery Google Maps v3 Test</title>
+        <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script> <!-- set to true for GPS devices -->
+        <script language="JavaScript" src="../jquery-1.5.1.js"></script>
+        <script language="JavaScript" src="../GoogleMapV3.js"></script>
+    </head>
+    <body bgcolor="#dddddd">
+        <form>
+            <div style="position: relative;">
+                <div style="float: left;" id="address">
+                    <p>
+                        <label for="street">Street</label><br>
+                        <input type="text" name="street" id="street">
+                    </p>
+                    <p>
+                        <label for="city">City</label><br>
+                        <input type="text" name="city" id="city" 
+                        value="Wake Forest">
+                    </p>
+                    <p>
+                        <label for="state">State</label><br>
+                        <input type="text" name="state" id="state" value="NC">
+                    </p>
+                    <p>
+                        <label for="zip">Zip Code</label><br>
+                        <input type="text" name="zip" id="zip" value="27587">
+                    </p>
+                    <p id="updateMapButtonDiv" style="text-align: center;">
+                        <button id="updateMapButton" type="button">Update Map 
+                            Location</button>
+                         </p>
+                </div>
+                <div id="map" style="float: left;">
+                    
+                </div>
+            </div>
+            
+        </form> 
+        <p id="output"></p>
+        <script language="JavaScript">
+            var street = $('#street').val();
+            var city = $('#city').val();
+            var state = $('#state').val();
+            var zip = $('#zip').val();
+
+            $('#updateMapButtonDiv').toggle(false);
+            $('#map').GoogleLocationPicker();
+            $('#address input').keyup(function() {
+                if($('#street').val() != '' && $('#city').val() != '' && $('#state').val() != '' && $('#zip').val() != '') {
+                    if($('#street').val() != street || $('#city').val() != city || $('#state').val() != state || $('#zip').val() != zip) {
+                        $('#updateMapButtonDiv').toggle(true);
+                    } else {
+                        $('#updateMapButtonDiv').toggle(false);
+                    }
+                } else {
+                    $('#updateMapButtonDiv').toggle(false);
+                }
+            });
+            $('#updateMapButton').click(function() {
+                street = $('#street').val();
+                city = $('#city').val();
+                state = $('#state').val();
+                zip = $('#zip').val();
+
+                var address = $('#street').val() + ', ' + $('#city').val() + ', ' + $('#state').val() + ', ' + $('#zip').val();
+                $('#map').GoogleLocationPicker('setAddress', {address: address,
+                    callback: function() {
+                        $('#output').html("<b>Latitude:</b> " + $('#lat').val() + "<br><b>Longitude:</b> " + $('#lng').val());
+                    }
+                });
+                $('#updateMapButtonDiv').toggle(false);
+            });
+            $('#lat').change(function() {
+                $('#output').html("<b>Latitude:</b> " + $('#lat').val() + "<br><b>Longitude:</b> " + $('#lng').val());             });
+        </script>    </body></html>

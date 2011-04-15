@@ -1,0 +1,33 @@
+GoogleMapV3
+
+This is a collection of jQuery plugins to add and control Google Maps 
+under the v3 javascript library.
+
+Plugins:
+  GoogleMapV3 
+    - Add a map and markers.
+  GoogleLocationPicker 
+     - Adds a map and marker for fine tuning latitude and 
+
+Examples:
+  test/test.html
+    - Adds a map and a draggable marker.
+  test/test2.html
+    - Adds a location picker map to an address form.
+
+TODO: Add more documentation! ;)
+
+== Contributing ==
+
+Contributions to the source are always welcome as well as suggestions 
+for development direction. See CONTRIBUTING for details.
+
+== Licenses  ==
+
+This programs is dual licensed under the BSD or GPL v2 or later. See the 
+COPYING file and LICENSE.BSD or LICENSE.GPL.
+
+Project page:   http://HatterasSoftware.com/products/GoogleMapV3
+Git repository: http://github.com/nedwidek/jquery-GoogleMapV3
+
+Copyright 
