@@ -17,6 +17,11 @@ Examples:
 
 TODO: Add more documentation! ;)
 
+== Requirements ==
+
+A copy of the jQuery core library (http://jquery.com/). Development was 
+done with 1.5.1, but it is expected that 1.4 or later should also work.
+
 == Contributing ==
 
 Contributions to the source are always welcome as well as suggestions 
@@ -30,4 +35,4 @@ COPYING file and LICENSE.BSD or LICENSE.GPL.
 Project page:   http://HatterasSoftware.com/products/GoogleMapV3
 Git repository: http://github.com/nedwidek/jquery-GoogleMapV3
 
-Copyright 
+Copyright 2011, Lighthouse IT Consulting.
