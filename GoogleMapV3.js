@@ -24,7 +24,6 @@
             height: "300px",
             zoom: 8,
             mapType: google.maps.MapTypeId.ROADMAP,
-                            
         };
 
         var markerDefaults = {
@@ -35,6 +34,11 @@
             clickable: false,
             visible: true
         }
+
+	var centerDefaults = {
+	    lat: 51.478196,
+	    lng: -0.002167,
+	}
 
         var methods = {
             init: function(options) {
@@ -81,7 +85,9 @@
             },
 
             setCenter: function(latlng) {
-                 map.setCenter(latlng);
+	         var centerOptions = $.extend(centerDefaults, latlng);
+		 var mapsLatLng = new google.maps.LatLng(centerOptions.lat, centerOptions.lng);
+                 map.setCenter(mapsLatLng);
             },
 
             fitBounds: function(latlngbounds) {
