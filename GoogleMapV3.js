@@ -92,7 +92,13 @@
 
             fitBounds: function(latlngbounds) {
                  map.fitBounds(latlngbounds);
-            }
+            },
+
+	    addMarkerAndCenter: function(markerOptions) {
+	       methods['setCenter'](markerOptions);
+	       // Return the marker reference just like addMarker
+	       return methods['addMarker'](markerOptions);
+	    },
     
         };
 
