@@ -40,6 +40,12 @@
 	    lng: -0.002167,
 	}
 
+	var listnerDefaults = {
+	    type: 'click',
+	    actor: map,
+	    action: function(event) { },
+	}
+
         var methods = {
             init: function(options) {
                     
@@ -98,6 +104,11 @@
 	       methods['setCenter'](markerOptions);
 	       // Return the marker reference just like addMarker
 	       return methods['addMarker'](markerOptions);
+	    },
+
+	    addListener: function(listnerOptions) {
+	       var listener = $.extend(listnerDefaults, listnerOptions);
+	       google.maps.event.addListener(listener.actor, listener.type, listener.action);
 	    },
     
         };
