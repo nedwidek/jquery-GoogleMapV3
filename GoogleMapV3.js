@@ -24,7 +24,6 @@
             height: "300px",
             zoom: 8,
             mapType: google.maps.MapTypeId.ROADMAP,
-                            
         };
 
         var markerDefaults = {
@@ -35,6 +34,17 @@
             clickable: false,
             visible: true
         }
+
+	var centerDefaults = {
+	    lat: 51.478196,
+	    lng: -0.002167,
+	}
+
+	var listnerDefaults = {
+	    type: 'click',
+	    actor: map,
+	    action: function(event) { },
+	}
 
         var methods = {
             init: function(options) {
@@ -81,12 +91,25 @@
             },
 
             setCenter: function(latlng) {
-                 map.setCenter(latlng);
+	         var centerOptions = $.extend(centerDefaults, latlng);
+		 var mapsLatLng = new google.maps.LatLng(centerOptions.lat, centerOptions.lng);
+                 map.setCenter(mapsLatLng);
             },
 
             fitBounds: function(latlngbounds) {
                  map.fitBounds(latlngbounds);
-            }
+            },
+
+	    addMarkerAndCenter: function(markerOptions) {
+	       methods['setCenter'](markerOptions);
+	       // Return the marker reference just like addMarker
+	       return methods['addMarker'](markerOptions);
+	    },
+
+	    addListener: function(listnerOptions) {
+	       var listener = $.extend(listnerDefaults, listnerOptions);
+	       google.maps.event.addListener(listener.actor, listener.type, listener.action);
+	    },
     
         };
 
